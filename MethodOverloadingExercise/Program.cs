@@ -22,19 +22,25 @@ namespace MethodOverloadingExercise
             var intI = 1;
 
             var add1 = Add(intA, intB);
-            Console.WriteLine($"The sum of integers {intA} and {intB} is {add1}");
+            Console.WriteLine($"The sum of integers {intA} and {intB} is {add1}.");
 
             var add2 = Add(decC, decD);
-            Console.WriteLine($"The sum of decimals {decC} and {decD} is {add2}");
+            Console.WriteLine($"The sum of decimals {decC} and {decD} is {add2}.");
+            Console.WriteLine();
 
             var add3 = Add(intE, intF, yesDollars);
-            Console.WriteLine($"The sum of {intE} and {intF} is {add3}");
+            Console.WriteLine("The result below should use the dollars label.");
+            Console.WriteLine($"The sum of {intE} and {intF} is {add3}.");
+            Console.WriteLine();
 
             var add4 = Add(intE, intF, noDollars);
-            Console.WriteLine($"The sum of {intE} and {intF} is {add4}");
+            Console.WriteLine("The result below should NOT label as dollars.");
+            Console.WriteLine($"The sum of {intE} and {intF} is {add4}.");
+            Console.WriteLine();
 
             var add5 = Add(intH, intI, yesDollars);
-            Console.WriteLine($"The sum of {intH} and {intI} is {add5}");
+            Console.WriteLine("The result below should be a single dollar designation.");
+            Console.WriteLine($"The sum of {intH} and {intI} is {add5}.");
 
 
         }
@@ -59,8 +65,27 @@ namespace MethodOverloadingExercise
         public static string Add(int e, int f, bool g)
         {
             var sum = e + f;
+            var theString = "";
 
+            if (g && sum > 1)
+            {
+                theString = $"{sum} dollars";
+            }
+            else if (g && sum == 1)
+            {
+                theString = $"{sum} dollar";
+            }
+            else if (g && sum < 1)
+            {
+                theString = $"{sum} dollars";
+            }
+            else
+            {
+                theString = sum.ToString();
 
+            }
+
+            return theString;
         }
     }
 }
